@@ -1,6 +1,5 @@
 import greenfoot.*;
 
-
 public class Apple extends Actor
 {
     public void act()
