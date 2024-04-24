@@ -2,6 +2,9 @@ import greenfoot.*;
 
 public class Apple extends Actor
 {
+    public static int counts = MyWorld.score;
+    public static int gameOver = 0;
+    
     public void act()
     {
         move(-3);
@@ -9,6 +12,7 @@ public class Apple extends Actor
         if(getX() <= 0)
         {
             resetApple();
+            counts++;
         }
         
         if(isTouching(Hero.class))
@@ -16,6 +20,7 @@ public class Apple extends Actor
             SadFace sadFace = new SadFace();
             getWorld().addObject(sadFace, 300, 200);
             getWorld().removeObject(this);
+            gameOver = 1;
         }
     }
     
@@ -32,4 +37,5 @@ public class Apple extends Actor
         }
             
     }
+    
 }

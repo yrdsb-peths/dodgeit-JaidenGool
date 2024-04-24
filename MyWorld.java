@@ -3,6 +3,8 @@ import greenfoot.*;
 public class MyWorld extends World
 {
     public static int score = 0;
+    public static int counts = 0;
+    
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -14,7 +16,8 @@ public class MyWorld extends World
         Apple apple = new Apple();
         addObject(apple, 500, 100);
         
-        showText("Score: " + score, 50, 25);
+        showText("Clicks: " + score, 50, 25);
+        showText("Score: " + counts, 500, 30);
         
         if(Greenfoot.mouseClicked(null))
         {
@@ -25,11 +28,19 @@ public class MyWorld extends World
     
     public void act()
     {
-        showText("Score: " + score, 50, 25);
-        if(Greenfoot.mouseClicked(null))
+        counts = Apple.counts;
+        int gameOver = Apple.gameOver;
+        
+        showText("Clicks: " + score, 50, 25);
+        showText("Score: " + counts, 500, 30);
+        if(gameOver == 1)
+        {
+            showText("Game over!", 300, 100);
+        }
+        else if(Greenfoot.mouseClicked(null))
         {
             score++;
-            showText("Score: " + score, 50, 25);
+            showText("Clicks: " + counts, 50, 25);
         }
     }
 }
